@@ -32,4 +32,3 @@ final = grid[["lat", "lon", "temp_sd_norm"]]
 # Save the final table
 grid.to_csv("tsd_resampled_5x5_normalized.csv", index=False)
 
-print("✅ Done! File saved as tsd_resampled_5x5_normalized.csv")
