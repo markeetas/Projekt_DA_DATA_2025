@@ -1,4 +1,4 @@
-#Resample and normalize
+# Resample lower-resolution climate data to a 5x5° grid and normalize the values
 
 import pandas as pd
 import numpy as np
@@ -13,11 +13,12 @@ df = df.rename(columns={
     "Temperature_sd": "temp_sd"
 })
 
-# Create a 5x5° grid, starting at 2.5°
+# Create a coarser 5x5° grid by flooring to nearest multiple of 5, then centering at 2.5°
+# This effectively aggregates original points into larger grid cells
 df["lon_grid"] = (np.floor(df["lon"] / 5) * 5 + 2.5) % 360
 df["lat_grid"] = (np.floor(df["lat"] / 5) * 5 + 2.5)
 
-# Group data by each grid cell and calculate mean values
+# Group values by each grid cell and compute the mean temperature_sd per cell
 grid = df.groupby(["lat_grid", "lon_grid"]).agg({
     "temp_sd": "mean"
 }).reset_index()
