@@ -46,7 +46,7 @@ df5mean["longitude"] = df5mean["longitude"].round(1)
 output_csv = r"E:\DATA VECI\Elevace\elevation.csv"
 df5mean.to_csv(output_csv, index=False, float_format="%.1f")
 
-print(f"✅ elevation_5deg_mean.csv uložen s celými elevacemi, řádků: {len(df5mean)}")
+print(f"elevation_5deg_mean.csv uložen s celými elevacemi, řádků: {len(df5mean)}")
 
 
 
