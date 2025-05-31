@@ -1,6 +1,5 @@
 import pandas as pd
 import os
-from functools import reduce
 from numpy import nan
 
 # Function to load and standardize a dataset
@@ -43,8 +42,10 @@ for name, (path, col, _) in params.items():
     df = load_param(os.path.join("C:/Users/marke", path), col, name)
     frames.append(df)
 
-# Merge all DataFrames on lat/lon using outer join
-full = reduce(lambda left, right: pd.merge(left, right, on=["lat", "lon"], how="outer"), frames)
+# Merge all dataframes on lat/lon using outer join
+full = frames[0]
+for df in frames[1:]:
+    full = full.merge(df, on=["lat", "lon"], how="outer")
 
 # Invert selected values
 full["Thorium_INV"] = 1 - full["Thorium"]             
