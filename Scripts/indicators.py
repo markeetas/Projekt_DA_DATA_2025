@@ -31,7 +31,6 @@ params = {
     "Chlorine": ("chlorine_concentration_normalized.csv", "CONCENTRATION_NORM", 1),
     "Temp_Cold": ("mars_typical_temperatures_5x5_2.5start_normalized.csv", "cold_night_C_NORM", 3),
     "Dust_storms": ("storm_summary_5x5_days_normalized.csv", "stormy_days_normalized", 4),
-    "Radiation": ("mars_grid_radiation2.csv", "dose_e_norm", 4),
     "Temp_Sd": ("mars_temperature_average_2.5start_normalized.csv", "annual_range_C_NORM", 3),
     "Temp_Avg": ("mars_temperature_average_2.5start_normalized.csv", "annual_avg_C_NORM", 1),
 }
