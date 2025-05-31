@@ -47,18 +47,17 @@ for name, (path, col, _) in params.items():
 full = reduce(lambda left, right: pd.merge(left, right, on=["lat", "lon"], how="outer"), frames)
 
 # Invert selected values
-full["Radiation_INV"] = 1 - full["Radiation"]   
 full["Thorium_INV"] = 1 - full["Thorium"]             
 
-# Define sets of keys (parameters) 
-industry_keys = ["Water", "Silicon", "Iron", "Thorium", "Potassium", "Chlorine", "Temp_Cold", "Dust_storms", "Radiation"]
-habit_keys = ["Water", "Radiation", "Thorium_INV", "Dust_storms", "Temp_Cold", "Temp_Sd", "Temp_Avg"]
+# Define sets of keys
+industry_keys = ["Water", "Silicon", "Iron", "Thorium", "Potassium", "Chlorine", "Temp_Cold", "Dust_storms"]
+habit_keys = ["Water", "Thorium_INV", "Dust_storms", "Temp_Cold", "Temp_Sd", "Temp_Avg"]
 
 # Extract weights 
 industry_params = {k: params[k.replace("_INV", "")] for k in industry_keys}
 habit_params = {k: params[k.replace("_INV", "")] for k in habit_keys}
 
-# Compute weighted composite score and count of valid parameters used
+# Compute weighted composite score
 def weighted_score_and_count(row, param_weights):
     values = []
     weights = []
