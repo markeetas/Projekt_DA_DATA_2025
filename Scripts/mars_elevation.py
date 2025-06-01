@@ -26,7 +26,7 @@ coarse_mean = arr_cut.reshape(lat_cells, bh, lon_cells, bw).mean(axis=(1, 3))
 lat_centers = 90 - ((np.arange(lat_cells) * bh + bh / 2) / nrows) * 180
 lon_centers = ((np.arange(lon_cells) * bw + bw / 2) / ncols) * 360
 
-# Construct the DataFrame
+# Construct the dataframe
 lat_rep = np.repeat(lat_centers, lon_cells)
 lon_rep = np.tile(   lon_centers,    lat_cells)
 elev_rep = coarse_mean.ravel()
@@ -47,7 +47,7 @@ df5mean["longitude"] = df5mean["longitude"].round(1)
 output_csv = r"E:\DATA VECI\Elevace\elevation.csv"
 df5mean.to_csv(output_csv, index=False, float_format="%.1f")
 
-print(f"elevation_5deg_mean.csv saved with integer elevations, rows: {len(df5mean)}")
+print(f"elevation.csv saved with integer elevations, rows: {len(df5mean)}")
 
 
 

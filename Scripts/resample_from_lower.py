@@ -1,4 +1,4 @@
-# Resample lower-resolution climate data to a 5x5° grid and normalize the values
+# Resample lower-resolution data to a 5x5° grid and normalize the values
 
 import pandas as pd
 import numpy as np
@@ -6,15 +6,14 @@ import numpy as np
 # Load dataset
 df = pd.read_csv('t_sd_global_average.csv')  
 
-# Rename columns for simplicity
+# Rename columns for clarity
 df = df.rename(columns={
     "Longitude": "lon",
     "Latitude": "lat",
     "Temperature_sd": "temp_sd"
 })
 
-# Create a coarser 5x5° grid by flooring to nearest multiple of 5, then centering at 2.5°
-# This effectively aggregates original points into larger grid cells
+# Convert coordinates to a 5x5° grid centered at 2.5°
 df["lon_grid"] = (np.floor(df["lon"] / 5) * 5 + 2.5) % 360
 df["lat_grid"] = (np.floor(df["lat"] / 5) * 5 + 2.5)
 
@@ -32,6 +31,6 @@ for col in ["temp_sd"]:
 
 # Keep only final columns
 final = grid[["lat", "lon", "temp_sd_norm"]]
-# Save the final table
+# Save the final dataset
 grid.to_csv("tsd_resampled_5x5_normalized.csv", index=False)
 
