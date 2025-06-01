@@ -1,5 +1,3 @@
-# ProjektMars – Analýza obyvatelnosti a průmyslového potenciálu Marsu
-
 **Závěrečný projekt s názvem Když Země nestačí, Digitální akademie Data, Praha 2025**  
 Autorky: Ksenia Hapitsonova, Markéta Fajtová  
 
