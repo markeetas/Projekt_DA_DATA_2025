@@ -1,4 +1,4 @@
-# Resample lower-resolution climate data to a 5x5° grid and normalize the values
+# Resample lower-resolution data to a 5x5° grid and normalize the values
 
 import pandas as pd
 import numpy as np
