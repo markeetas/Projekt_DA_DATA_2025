@@ -50,7 +50,7 @@ for dat_file in dat_files:
     records = [struct.unpack(struct_fmt, data[i:i + row_size])
                for i in range(0, len(data), row_size)]
 
-    # Save to CSV file
+    # Save to csv
     with open(csv_path, "w", newline="") as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow([name for name, _ in fields])
